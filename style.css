@@ -1,0 +1,288 @@
+/* Reset & Pengaturan Global */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 300;
+    /* REVISI WARNA: 
+      Latar belakang gradien biru langit yang sejuk.
+    */
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    /* Menjaga agar background penuh di layar */
+    min-height: 100vh;
+    background-attachment: fixed; 
+    
+    /* REVISI WARNA: Warna teks utama (biru tua) */
+    color: #00224D; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* --- Intro Page (Sekarang juga transparan) --- */
+.intro-page {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    /* Gradien yang sama dengan body */
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    background-attachment: fixed;
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; text-align: center; z-index: 1000;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+.intro-page.active { opacity: 1; visibility: visible; }
+.intro-image {
+    width: 150px; height: 150px; object-fit: contain;
+    margin-bottom: 20px; animation: bounceIn 1s ease-out forwards;
+}
+.intro-page h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2.5rem; 
+    /* REVISI WARNA: Biru tua pekat */
+    color: #003366; 
+    margin-bottom: 10px;
+    animation: fadeInScale 1s ease-out 0.5s forwards; opacity: 0;
+}
+.intro-page p {
+    font-size: 1.2rem; margin-bottom: 30px;
+    color: #00224D;
+    animation: fadeInScale 1s ease-out 0.8s forwards; opacity: 0;
+}
+
+/* REVISI DESAIN: KONTEN UTAMA (EFEK KACA BURAM)
+  Ini adalah inti dari desain "transparan"
+*/
+.main-content {
+    width: 100%; max-width: 900px; text-align: center;
+    
+    /* REVISI DESAIN: Efek 'Frosted Glass' */
+    background: rgba(255, 255, 255, 0.25); /* Transparan Putih */
+    backdrop-filter: blur(10px); /* Efek buram */
+    -webkit-backdrop-filter: blur(10px); /* Untuk Safari */
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Garis tepi kaca */
+    
+    padding: 30px; 
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); /* Shadow lembut */
+    
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    position: relative; z-index: 1;
+}
+.main-content.active { opacity: 1; transform: translateY(0); }
+
+/* REVISI WARNA: Hujan Hati Biru */
+.heart-rain-container {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden; pointer-events: none; z-index: -1;
+    border-radius: 20px; /* Ikuti bentuk kontainer */
+}
+.heart {
+    position: absolute; 
+    /* REVISI WARNA: Biru muda */
+    color: #a0e9ff; 
+    font-size: 1.5rem;
+    animation: fall 10s linear infinite; opacity: 0;
+}
+@keyframes fall {
+    0% { transform: translateY(-10vh) scale(0); opacity: 0; }
+    10% { opacity: 1; transform: translateY(0vh) scale(1); }
+    80% { opacity: 1; transform: translateY(80vh) scale(1.1); }
+    100% { transform: translateY(110vh) scale(1.2); opacity: 0; }
+}
+
+/* Apology Section */
+.apology h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2.8rem; 
+    /* REVISI WARNA: Biru tua pekat */
+    color: #003366; 
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Shadow netral */
+}
+.apology p {
+    font-size: 1.15rem; line-height: 1.7;
+    margin-bottom: 20px; 
+    color: #00224D; /* Warna teks biru tua */
+}
+.handwritten-note {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #004a99; /* Warna biru lebih terang */
+    margin-bottom: 10px; display: block;
+    animation: fadeIn 1s ease-out;
+}
+
+/* REVISI WARNA: Tombol Biru */
+.cute-btn {
+    font-family: 'Poppins', sans-serif; font-size: 1.1rem;
+    font-weight: 600; 
+    /* REVISI WARNA: Biru cerah */
+    background-color: #3B82F6; 
+    color: white; border: none; padding: 15px 30px;
+    border-radius: 50px; cursor: pointer;
+    transition: all 0.3s ease;
+    /* REVISI WARNA: Shadow biru */
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); 
+    margin-top: 15px;
+}
+.cute-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+.cute-btn.small-btn {
+    font-size: 0.95rem; padding: 10px 20px; margin: 5px;
+}
+
+/* Tombol Lari-larian */
+.cute-question {
+    margin: 30px 0;
+    border-top: 1px dashed rgba(0, 34, 77, 0.2); /* Garis putus biru transparan */
+    padding-top: 20px;
+}
+.cute-question p {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.6rem;
+    color: #003366; /* Biru tua */
+    margin-bottom: 15px;
+}
+.button-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+}
+#yesBtn {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+#noBtn {
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    transform: translateX(-50%);
+    z-index: 1;
+    /* REVISI WARNA: Biru sedikit lebih muda */
+    background-color: #60a5fa; 
+    transition: left 0.3s ease-out, top 0.3s ease-out; 
+}
+
+/* Galeri Styling */
+.gallery-container {
+    margin-top: 40px; opacity: 0; max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.8s ease-out, max-height 1s ease-out;
+    transform: translateY(20px);
+}
+.gallery-container.show {
+    opacity: 1; max-height: 2000px; transform: translateY(0);
+}
+.gallery-container h2 {
+    font-family: 'Satisfy', cursive;
+    font-size: 2.2rem; 
+    color: #003366; /* Biru tua */
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px; margin-bottom: 20px;
+}
+.gallery-item {
+    position: relative; overflow: hidden; border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    animation: popIn 0.6s ease-out forwards;
+    opacity: 0; transform: scale(0.8) rotateZ(-5deg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.gallery-item:hover {
+    transform: scale(1.03) rotateZ(0deg);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+.gallery-item img {
+    width: 100%; height: 200px; object-fit: cover; display: block;
+}
+.caption-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    color: white; padding: 10px; font-size: 1.1rem;
+    text-align: left; transform: translateY(100%);
+    transition: transform 0.3s ease-out;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+}
+.gallery-item:hover .caption-overlay { transform: translateY(0%); }
+
+.gallery-closing {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.7rem;
+    color: #003366; /* Biru tua */
+    margin-top: 30px;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+/* --- (Animasi Keyframes tidak berubah) --- */
+@keyframes popIn {
+    to { opacity: 1; transform: scale(1) rotateZ(0deg); }
+}
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+/* --- (Media Queries/Responsive tidak berubah signifikan, hanya penyesuaian) --- */
+@media (max-width: 768px) {
+    .intro-page h1 { font-size: 2rem; }
+    .intro-page p { font-size: 1rem; }
+    .main-content { padding: 20px; }
+    .apology h1 { font-size: 2.2rem; }
+    .apology p { font-size: 1rem; }
+    .handwritten-note { font-size: 1.3rem; }
+    .cute-btn { font-size: 1rem; padding: 12px 25px; }
+    .cute-btn.small-btn { font-size: 0.85rem; padding: 8px 15px; }
+    .cute-question p { font-size: 1.4rem; }
+    .gallery-container h2 { font-size: 1.8rem; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .gallery-item img { height: 150px; }
+    .caption-overlay { font-size: 1rem; padding: 8px; }
+    .gallery-closing { font-size: 1.4rem; }
+    .button-wrapper { height: 120px; }
+    #yesBtn { width: 70%; }
+    #noBtn { width: 70%; top: 65px; }
+}
+
+@media (max-width: 480px) {
+    /* Sedikit kurangi blur di HP kentang agar lebih ringan */
+    .main-content {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+    .intro-page h1 { font-size: 1.8rem; }
+    .intro-image { width: 120px; height: 120px; }
+    .intro-page p { font-size: 0.9rem; }
+    .apology h1 { font-size: 1.8rem; }
+    .apology p { font-size: 0.95rem; }
+    .cute-btn { font-size: 0.9rem; padding: 10px 20px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .caption-overlay { font-size: 0.9rem; }
+}
